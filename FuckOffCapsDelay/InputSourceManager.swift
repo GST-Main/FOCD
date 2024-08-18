@@ -10,13 +10,17 @@ final class InputSourceManager {
         } else if Language.japanese.inputSource?.isSelected == true {
             return .japanese
         } else {
+            logger.error("Failed to retrieve current input source.")
             return .english
         }
     }
     
     static func setInputSource(as language: Language) {
         if language == .japanese {
-            guard Language.japanese.inputSource != nil else { return }
+            guard Language.japanese.inputSource != nil else {
+                logger.error("Attempted to set Japanese input source but could not find it.")
+                return
+            }
         }
         TISSelectInputSource(language.inputSource!)
     }
@@ -34,15 +38,24 @@ final class InputSourceManager {
         }()
         
         static let korean = {
-            let inputSource = inputSources.first { $0.id == "com.apple.inputmethod.Korean.2SetKorean" }!
+            guard let inputSource = inputSources.first(where: { $0.id == "com.apple.inputmethod.Korean.2SetKorean" }) else {
+                logger.fault("Failed to find Korean input source from list.")
+                fatalError("Failed to find Korean input source from list.")
+            }
             return Language(inputSource)
         }()
         static let english = {
-            let inputSource = inputSources.first { $0.id == "com.apple.keylayout.ABC" }!
+            guard let inputSource = inputSources.first(where: { $0.id == "com.apple.keylayout.ABC" }) else {
+                logger.fault("Failed to find Korean input source from list.")
+                fatalError("Failed to find Korean input source from list.")
+            }
             return Language(inputSource)
         }()
         static let japanese = {
             let inputSource = inputSources.first { $0.id == "com.apple.inputmethod.Kotoeri.RomajiTyping.Japanese" }
+            if inputSource == nil {
+                logger.info("No Japanese input source in list.")
+            }
             return Language(inputSource)
         }()
     }

@@ -30,6 +30,7 @@ class InputManager {
 
         let res = IOHIDManagerOpen(hid, 0)
         if res != kIOReturnSuccess {
+            logger.fault("Failed to initialize hid")
             IOHIDManagerClose(hid, 0)
             // TODO: Failed to open (initialize), throw it
         }
