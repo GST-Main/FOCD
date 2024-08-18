@@ -91,11 +91,4 @@ extension TISInputSource {
     var sourceLanguages: [String] {
         return getProperty(kTISPropertyInputSourceLanguages) as! [String]
     }
-
-    var isCJKV: Bool {
-        if let lang = sourceLanguages.first {
-            return ["ko", "ja", "vi"].contains(lang) || lang.hasPrefix("zh")
-        }
-        return false
-    }
 }
