@@ -7,15 +7,23 @@ class InputManager {
 
     func start() {
         let hid = IOHIDManagerCreate(kCFAllocatorDefault, 0)
-        IOHIDManagerSetDeviceMatching(
-            hid,
-            [kIOHIDDeviceUsagePageKey: kHIDPage_GenericDesktop,   // Generic Desktop Page (0x01)
-            kIOHIDDeviceUsageKey: kHIDUsage_GD_Keyboard] as CFDictionary // Keyboard (0x06, Collection Application)
-        )
-        IOHIDManagerSetInputValueMatching(
-            hid,
-            [kIOHIDElementUsagePageKey: kHIDPage_KeyboardOrKeypad] as CFDictionary // Keyboard/Keypad (0x07, Selectors or Dynamic Flags)
-        )
+        
+        let deviceFilter = [
+            kIOHIDDeviceUsagePageKey: kHIDPage_GenericDesktop,  // Generic Desktop Page (0x01)
+            kIOHIDDeviceUsageKey: kHIDUsage_GD_Keyboard         // Keyboard (0x06, Collection Application)
+        ] as CFDictionary
+        IOHIDManagerSetDeviceMatching(hid, deviceFilter)
+
+        let inputValueFilter = [
+            Keys.capsLock,
+            Keys.lShift,
+            Keys.lOption,
+            Keys.rShift,
+            Keys.rOption
+        ].map {
+            [kIOHIDElementUsageKey: $0] as CFDictionary
+        } as CFArray
+        IOHIDManagerSetInputValueMatchingMultiple(hid, inputValueFilter)
         
         let callback: IOHIDValueCallback = { context, result, sender, value in
             guard result == kIOReturnSuccess else { return }
