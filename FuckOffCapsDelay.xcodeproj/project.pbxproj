@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1A7806BF2C71F88C0080D50A /* FuckOffCapsDelay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuckOffCapsDelay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A7806BF2C71F88C0080D50A /* Fuck Off Capslock Delay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fuck Off Capslock Delay.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A7806C22C71F88C0080D50A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A7806C62C71F88C0080D50A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A7806CB2C71F88C0080D50A /* FuckOffCapsDelay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FuckOffCapsDelay.entitlements; sourceTree = "<group>"; };
@@ -24,6 +24,7 @@
 		1A7806D42C72014D0080D50A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1A7806D62C7205020080D50A /* InputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
 		1A7806D82C720C550080D50A /* InputSourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSourceManager.swift; sourceTree = "<group>"; };
+		1ADDFE362C7245E800C20D73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +49,7 @@
 		1A7806C02C71F88C0080D50A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1A7806BF2C71F88C0080D50A /* FuckOffCapsDelay.app */,
+				1A7806BF2C71F88C0080D50A /* Fuck Off Capslock Delay.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,6 +57,7 @@
 		1A7806C12C71F88C0080D50A /* FuckOffCapsDelay */ = {
 			isa = PBXGroup;
 			children = (
+				1ADDFE362C7245E800C20D73 /* Info.plist */,
 				1A7806D12C71F94B0080D50A /* main.swift */,
 				1A7806C22C71F88C0080D50A /* AppDelegate.swift */,
 				1A7806D62C7205020080D50A /* InputManager.swift */,
@@ -84,7 +86,7 @@
 			);
 			name = FuckOffCapsDelay;
 			productName = FuckOffCapsDelay;
-			productReference = 1A7806BF2C71F88C0080D50A /* FuckOffCapsDelay.app */;
+			productReference = 1A7806BF2C71F88C0080D50A /* Fuck Off Capslock Delay.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -284,10 +286,11 @@
 				CODE_SIGN_ENTITLEMENTS = FuckOffCapsDelay/FuckOffCapsDelay.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3SC5M9PT96;
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FuckOffCapsDelay/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Fuck Off Capslock Delay";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
@@ -299,9 +302,9 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.GST.focd;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Fuck Off Capslock Delay";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -315,10 +318,11 @@
 				CODE_SIGN_ENTITLEMENTS = FuckOffCapsDelay/FuckOffCapsDelay.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3SC5M9PT96;
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FuckOffCapsDelay/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Fuck Off Capslock Delay";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
@@ -330,9 +334,9 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.GST.focd;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Fuck Off Capslock Delay";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
