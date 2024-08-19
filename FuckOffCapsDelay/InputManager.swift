@@ -42,6 +42,7 @@ class InputManager {
             // TODO: Failed to open (initialize), throw it
         }
         
+        _ = InputSourceManager.currentInputSource // Initialize static variable
         self.hid = hid
     }
     

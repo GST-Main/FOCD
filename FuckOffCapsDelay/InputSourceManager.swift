@@ -22,6 +22,12 @@ final class InputSourceManager {
                 return
             }
         }
+        
+        // Workaround for TISSelectInputSource KCJV issue
+        if language != .english {
+            TISSelectInputSource(Language.english.inputSource!)
+        }
+        
         TISSelectInputSource(language.inputSource!)
     }
     
