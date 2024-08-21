@@ -4,6 +4,18 @@ class InputManager {
     private var hid: IOHIDManager!
     private var isShiftPressed = false
     private var isOptionPressed = false
+    private var tertiaryIM: InputSourceManager.Language?
+    
+    init() {
+        _ = InputSourceManager.currentInputSource // Initialize static variable
+        if InputSourceManager.Language.japanese.inputSource != nil {
+            tertiaryIM = .japanese
+        } else if InputSourceManager.Language.chinese.inputSource != nil {
+            tertiaryIM = .chinese
+        } else {
+            tertiaryIM = nil
+        }
+    }
 
     func start() {
         let hid = IOHIDManagerCreate(kCFAllocatorDefault, 0)
@@ -13,17 +25,24 @@ class InputManager {
             kIOHIDDeviceUsageKey: kHIDUsage_GD_Keyboard         // Keyboard (0x06, Collection Application)
         ] as CFDictionary
         IOHIDManagerSetDeviceMatching(hid, deviceFilter)
-
-        let inputValueFilter = [
+        
+        var inputValueFilter = [
             Keys.capsLock,
             Keys.lShift,
-            Keys.lOption,
             Keys.rShift,
-            Keys.rOption
-        ].map {
+        ]
+        
+        if tertiaryIM != nil {
+            inputValueFilter.append(contentsOf: [
+                Keys.lOption,
+                Keys.rOption
+            ])
+        }
+        
+        let filter = inputValueFilter.map {
             [kIOHIDElementUsageKey: $0] as CFDictionary
         } as CFArray
-        IOHIDManagerSetInputValueMatchingMultiple(hid, inputValueFilter)
+        IOHIDManagerSetInputValueMatchingMultiple(hid, filter)
         
         let callback: IOHIDValueCallback = { context, result, sender, value in
             guard result == kIOReturnSuccess else { return }
@@ -42,7 +61,6 @@ class InputManager {
             // TODO: Failed to open (initialize), throw it
         }
         
-        _ = InputSourceManager.currentInputSource // Initialize static variable
         self.hid = hid
     }
     
@@ -60,19 +78,22 @@ class InputManager {
             }
             
             setCapslockState(false)
-            if isOptionPressed {
-                if InputSourceManager.currentInputSource != .japanese {
-                    InputSourceManager.setInputSource(as: .japanese)
+            
+            if tertiaryIM != nil && isOptionPressed {
+                if InputSourceManager.currentInputSource != tertiaryIM! {
+                    InputSourceManager.setInputSource(as: tertiaryIM!)
                 } else {
                     InputSourceManager.setInputSource(as: .english)
                 }
-            } else {
-                if InputSourceManager.currentInputSource != .english {
-                    InputSourceManager.setInputSource(as: .english)
-                } else {
-                    InputSourceManager.setInputSource(as: .korean)
-                }
+                break
             }
+            
+            if InputSourceManager.currentInputSource != .english {
+                InputSourceManager.setInputSource(as: .english)
+            } else {
+                InputSourceManager.setInputSource(as: .korean)
+            }
+            
         case (Keys.lShift, .keyDown): fallthrough
         case (Keys.rShift, .keyDown):
             isShiftPressed = true

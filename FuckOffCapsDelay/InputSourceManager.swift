@@ -9,6 +9,8 @@ final class InputSourceManager {
             return .english
         } else if Language.japanese.inputSource?.isSelected == true {
             return .japanese
+        } else if Language.chinese.inputSource?.isSelected == true {
+            return .chinese
         } else {
             logger.error("Failed to retrieve current input source.")
             return .english
@@ -64,9 +66,15 @@ final class InputSourceManager {
             }
             return Language(inputSource)
         }()
+        static let chinese = {
+            let inputSource = inputSources.first { $0.id == "com.apple.inputmethod.SCIM.ITABC" }
+            if inputSource == nil {
+                logger.info("No Chinese input source in list.")
+            }
+            return Language(inputSource)
+        }()
     }
 }
-
 
 extension TISInputSource {
     private func getProperty(_ key: CFString) -> AnyObject? {

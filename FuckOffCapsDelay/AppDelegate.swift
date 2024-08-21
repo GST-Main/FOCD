@@ -31,6 +31,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
             japaneseMenuItem.action = #selector(setInputSourceJapanese)
             japaneseMenuItem.identifier = NSUserInterfaceItemIdentifier("menuItem.japanese")
             
+            let chineseMenuItem = NSMenuItem()
+            chineseMenuItem.title = "中文"
+            chineseMenuItem.target = self
+            chineseMenuItem.action = #selector(setInputSourceChinese)
+            chineseMenuItem.identifier = NSUserInterfaceItemIdentifier("menuItem.chinese")
+            
             let quitMenuItem = NSMenuItem()
             quitMenuItem.title = "Quit"
             quitMenuItem.target = self
@@ -40,6 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
             mainMenu.addItem(englishMenuItem)
             mainMenu.addItem(koreanMenuItem)
             mainMenu.addItem(japaneseMenuItem)
+            mainMenu.addItem(chineseMenuItem)
             mainMenu.addItem(.separator())
             mainMenu.addItem(quitMenuItem)
             
@@ -73,6 +80,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
             } else {
                 menuItem.state = .off
             }
+        case NSUserInterfaceItemIdentifier("menuItem.chinese"):
+            if InputSourceManager.Language.chinese.inputSource == nil {
+                menuItem.state = .off
+                return false
+            }
+            if InputSourceManager.currentInputSource == .chinese {
+                menuItem.state = .on
+            } else {
+                menuItem.state = .off
+            }
         default: return true
         }
         
@@ -94,6 +111,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
     @objc func setInputSourceJapanese() {
         if InputSourceManager.currentInputSource != .japanese {
             InputSourceManager.setInputSource(as: .japanese)
+        }
+    }
+    
+    @objc func setInputSourceChinese() {
+        if InputSourceManager.currentInputSource != .chinese {
+            InputSourceManager.setInputSource(as: .chinese)
         }
     }
     
