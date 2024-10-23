@@ -77,7 +77,11 @@ class InputManager {
                 break
             }
             
-            setCapslockState(false)
+            if !getCapslockState() {
+                break
+            } else {
+                setCapslockState(false)
+            }
             
             if tertiaryIM != nil && isOptionPressed {
                 if InputSourceManager.currentInputSource != tertiaryIM! {
