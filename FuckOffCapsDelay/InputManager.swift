@@ -72,7 +72,7 @@ class InputManager {
         case (Keys.capsLock, .keyDown):
             if isShiftPressed {
                 if InputSourceManager.currentInputSource != .english {
-                    InputSourceManager.setInputSource(as: .english)
+                    InputSourceManager.setInputSource(to: .english)
                 }
                 break
             }
@@ -85,17 +85,17 @@ class InputManager {
             
             if tertiaryIM != nil && isOptionPressed {
                 if InputSourceManager.currentInputSource != tertiaryIM! {
-                    InputSourceManager.setInputSource(as: tertiaryIM!)
+                    InputSourceManager.setInputSource(to: tertiaryIM!)
                 } else {
-                    InputSourceManager.setInputSource(as: .english)
+                    InputSourceManager.setInputSource(to: .english)
                 }
                 break
             }
             
             if InputSourceManager.currentInputSource != .english {
-                InputSourceManager.setInputSource(as: .english)
+                InputSourceManager.setInputSource(to: .english)
             } else {
-                InputSourceManager.setInputSource(as: .korean)
+                InputSourceManager.setInputSource(to: .korean)
             }
             
         case (Keys.lShift, .keyDown): fallthrough

@@ -98,25 +98,25 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
 
     @objc func setInputSourceEnglish() {
         if InputSourceManager.currentInputSource != .english {
-            InputSourceManager.setInputSource(as: .english)
+            InputSourceManager.setInputSource(to: .english)
         }
     }
     
     @objc func setInputSourceKorean() {
         if InputSourceManager.currentInputSource != .korean {
-            InputSourceManager.setInputSource(as: .korean)
+            InputSourceManager.setInputSource(to: .korean)
         }
     }
     
     @objc func setInputSourceJapanese() {
         if InputSourceManager.currentInputSource != .japanese {
-            InputSourceManager.setInputSource(as: .japanese)
+            InputSourceManager.setInputSource(to: .japanese)
         }
     }
     
     @objc func setInputSourceChinese() {
         if InputSourceManager.currentInputSource != .chinese {
-            InputSourceManager.setInputSource(as: .chinese)
+            InputSourceManager.setInputSource(to: .chinese)
         }
     }
     

@@ -17,10 +17,10 @@ final class InputSourceManager {
         }
     }
     
-    static func setInputSource(as language: Language) {
+    static func setInputSource(to language: Language) {
         if language == .japanese {
             guard Language.japanese.inputSource != nil else {
-                logger.error("Attempted to set Japanese input source but could not find it.")
+                logger.error("Attempted to set to Japanese input source but could not find it.")
                 return
             }
         }
