@@ -1,7 +1,7 @@
 import Cocoa
 import InputMethodKit
 
-final class InputSourceManager {
+enum InputSourceManager {
     static var currentInputSource: Language {
         if Language.korean.inputSource!.isSelected {
             return .korean
@@ -30,7 +30,23 @@ final class InputSourceManager {
             TISSelectInputSource(Language.english.inputSource!)
         }
         
-        TISSelectInputSource(language.inputSource!)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.001) { // 씹힘 방지를 위해 딜레이
+            TISSelectInputSource(Language.english.inputSource!)
+            TISSelectInputSource(language.inputSource!)
+            
+            if language == .korean {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    // 씹혔는지 확인하고 다시시도
+                    let currentTIS = TISInputSource.current
+                    if currentTIS.id != "com.apple.keylayout.2SetHangul" &&
+                       currentTIS.id != language.inputSource!.id {
+                        logger.error("씹힘 감지 다시시도")
+                        TISSelectInputSource(Language.english.inputSource!)
+                        TISSelectInputSource(language.inputSource!)
+                    }
+                }
+            }
+        }
     }
     
     struct Language: Equatable {
@@ -80,6 +96,10 @@ extension TISInputSource {
     private func getProperty(_ key: CFString) -> AnyObject? {
         guard let cfType = TISGetInputSourceProperty(self, key) else { return nil }
         return Unmanaged<AnyObject>.fromOpaque(cfType).takeUnretainedValue()
+    }
+    
+    static var current: TISInputSource {
+        return TISCopyCurrentKeyboardLayoutInputSource().takeRetainedValue()
     }
 
     var id: String {
