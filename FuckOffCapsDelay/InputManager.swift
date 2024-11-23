@@ -4,6 +4,7 @@ class InputManager {
     private var hid: IOHIDManager!
     private var isShiftPressed = false
     private var isOptionPressed = false
+    private var isCapslockEnabled = false
     private var tertiaryIM: InputSourceManager.Language?
     
     init() {
@@ -77,12 +78,12 @@ class InputManager {
                 break
             }
             
-            if !getCapslockState() {
-                break
-            } else {
+            if !isCapslockEnabled {
                 setCapslockState(false)
+            } else {
+                break
             }
-            
+
             if tertiaryIM != nil && isOptionPressed {
                 if InputSourceManager.currentInputSource != tertiaryIM! {
                     InputSourceManager.setInputSource(to: tertiaryIM!)
@@ -112,6 +113,10 @@ class InputManager {
             isOptionPressed = false
             
         default: return
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.02) { [self] in
+            self.isCapslockEnabled = getCapslockState()
         }
     }
     
