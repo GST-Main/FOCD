@@ -13,6 +13,7 @@
 		1A7806D52C72014D0080D50A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A7806D32C72014D0080D50A /* Main.storyboard */; };
 		1A7806D72C7205020080D50A /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7806D62C7205020080D50A /* InputManager.swift */; };
 		1A7806D92C720C550080D50A /* InputSourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7806D82C720C550080D50A /* InputSourceManager.swift */; };
+		1AF8EAA02CF1A32900E14740 /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF8EA9F2CF1A32900E14740 /* UserDefaultWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		1A7806D62C7205020080D50A /* InputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
 		1A7806D82C720C550080D50A /* InputSourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSourceManager.swift; sourceTree = "<group>"; };
 		1ADDFE362C7245E800C20D73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1AF8EA9F2CF1A32900E14740 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,14 +59,15 @@
 		1A7806C12C71F88C0080D50A /* FuckOffCapsDelay */ = {
 			isa = PBXGroup;
 			children = (
-				1ADDFE362C7245E800C20D73 /* Info.plist */,
 				1A7806D12C71F94B0080D50A /* main.swift */,
 				1A7806C22C71F88C0080D50A /* AppDelegate.swift */,
 				1A7806D62C7205020080D50A /* InputManager.swift */,
 				1A7806D82C720C550080D50A /* InputSourceManager.swift */,
+				1AF8EA9F2CF1A32900E14740 /* UserDefaultWrapper.swift */,
+				1ADDFE362C7245E800C20D73 /* Info.plist */,
 				1A7806C62C71F88C0080D50A /* Assets.xcassets */,
-				1A7806CB2C71F88C0080D50A /* FuckOffCapsDelay.entitlements */,
 				1A7806D32C72014D0080D50A /* Main.storyboard */,
+				1A7806CB2C71F88C0080D50A /* FuckOffCapsDelay.entitlements */,
 			);
 			path = FuckOffCapsDelay;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A7806D72C7205020080D50A /* InputManager.swift in Sources */,
+				1AF8EAA02CF1A32900E14740 /* UserDefaultWrapper.swift in Sources */,
 				1A7806C32C71F88C0080D50A /* AppDelegate.swift in Sources */,
 				1A7806D92C720C550080D50A /* InputSourceManager.swift in Sources */,
 				1A7806D22C71F94B0080D50A /* main.swift in Sources */,
@@ -340,7 +344,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.GST.focd;
 				PRODUCT_NAME = "Fuck Off Capslock Delay";
 				PROVISIONING_PROFILE_SPECIFIER = "";
