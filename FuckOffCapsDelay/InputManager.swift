@@ -1,10 +1,11 @@
 import IOKit.hid
+import AppKit
 
-class InputManager {
+final class InputManager {
     private var hid: IOHIDManager!
     private var isShiftPressed = false
     private var isOptionPressed = false
-    private var isCapslockEnabled = false
+    private var isCapslockOn = false
     private var tertiaryIM: InputSourceManager.Language?
     
     init() {
@@ -15,6 +16,22 @@ class InputManager {
             tertiaryIM = .chinese
         } else {
             tertiaryIM = nil
+        }
+        
+        // Watch capslock state
+        NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged) { [weak self] event in
+            guard let self else { return }
+            guard !event.modifierFlags.contains(.shift) else { return }
+            
+            // 캡스락 이벤트가 발생하고 나서 캡스락 상태를 설정
+            if !isCapslockOn && event.modifierFlags.contains(.capsLock) {
+                if event.keyCode == Keys.capsLock {
+                    self.setCapslockState(false)
+                }
+                
+                // 캡스락 끄는 동작을 처리하면 비정상적으로 동작하는 것으로 보임 (원인불명)
+                // 무시하면 알아서 꺼지므로 따로 처리 하지 말 것
+            }
         }
     }
 
@@ -68,19 +85,19 @@ class InputManager {
     private func checkInput(_ value: IOHIDValue) {
         let usage = IOHIDElementGetUsage(IOHIDValueGetElement(value))
         let keyState = IOHIDValueGetIntegerValue(value) != 0 ? KeyState.keyDown : KeyState.keyUp
-                
+        
         switch (usage, keyState) {
         case (Keys.capsLock, .keyDown):
             if isShiftPressed {
+                // Activate/Deactivate capslock + set to eng
+                isCapslockOn.toggle()
                 if InputSourceManager.currentInputSource != .english {
                     InputSourceManager.setInputSource(to: .english)
                 }
-                break
-            }
-            
-            if !isCapslockEnabled {
-                setCapslockState(false)
-            } else {
+                break // Test agoidn !!! sdfsdfsdf sdfsdfsdf  sdfsfsdf sdfsdf df
+            } else if isCapslockOn {
+                // Deactivate capslock only
+                isCapslockOn = false
                 break
             }
 
@@ -114,22 +131,18 @@ class InputManager {
             
         default: return
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.02) { [self] in
-            self.isCapslockEnabled = getCapslockState()
-        }
     }
     
     private func setCapslockState(_ state: Bool) {
         var ioConnect: io_connect_t = .init(0)
         let ioService = IOServiceGetMatchingService(kIOMainPortDefault, IOServiceMatching(kIOHIDSystemClass))
         IOServiceOpen(ioService, mach_task_self_, UInt32(kIOHIDParamConnectType), &ioConnect)
-        
         IOHIDSetModifierLockState(ioConnect, Int32(kIOHIDCapsLockState), state)
         
         IOServiceClose(ioConnect)
     }
     
+    // Unused
     private func getCapslockState() -> Bool {
         var ioConnect: io_connect_t = .init(0)
         let ioService = IOServiceGetMatchingService(kIOMainPortDefault, IOServiceMatching(kIOHIDSystemClass))
