@@ -18,19 +18,21 @@ final class InputManager {
             tertiaryIM = nil
         }
         
-        // Watch capslock state
-        NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged) { [weak self] event in
-            guard let self else { return }
-            guard !event.modifierFlags.contains(.shift) else { return }
-            
-            // 캡스락 이벤트가 발생하고 나서 캡스락 상태를 설정
-            if !isCapslockOn && event.modifierFlags.contains(.capsLock) {
-                if event.keyCode == Keys.capsLock {
-                    self.setCapslockState(false)
-                }
+        if #available(macOS 15.2, *) {
+            // Watch capslock state
+            NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged) { [weak self] event in
+                guard let self else { return }
+                guard !event.modifierFlags.contains(.shift) else { return }
                 
-                // 캡스락 끄는 동작을 처리하면 비정상적으로 동작하는 것으로 보임 (원인불명)
-                // 무시하면 알아서 꺼지므로 따로 처리 하지 말 것
+                // 캡스락 이벤트가 발생하고 나서 캡스락 상태를 설정
+                if !isCapslockOn && event.modifierFlags.contains(.capsLock) {
+                    if event.keyCode == Keys.capsLock {
+                        self.setCapslockState(false)
+                    }
+                    
+                    // 캡스락 끄는 동작을 처리하면 비정상적으로 동작하는 것으로 보임 (원인불명)
+                    // 무시하면 알아서 꺼지므로 따로 처리 하지 말 것
+                }
             }
         }
     }
@@ -94,10 +96,13 @@ final class InputManager {
                 if InputSourceManager.currentInputSource != .english {
                     InputSourceManager.setInputSource(to: .english)
                 }
-                break // Test agoidn !!! sdfsdfsdf sdfsdfsdf  sdfsfsdf sdfsdf df
+                break
             } else if isCapslockOn {
                 // Deactivate capslock only
                 isCapslockOn = false
+                if #unavailable(macOS 15.2) {
+                    setCapslockState(false)
+                }
                 break
             }
 
@@ -130,6 +135,13 @@ final class InputManager {
             isOptionPressed = false
             
         default: return
+        }
+        
+        
+        if #unavailable(macOS 15.2) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.02) { [self] in
+                self.isCapslockOn = getCapslockState()
+            }
         }
     }
     
