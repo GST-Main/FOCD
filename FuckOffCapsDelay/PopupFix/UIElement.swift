@@ -55,6 +55,22 @@ struct UIElement {
         
         return Dictionary(uniqueKeysWithValues: attributes)
     }
+    
+//    func setAttribute(_ attribute: AttributeName, to value: Any) {
+//        fatalError("Later")
+//    }
+    
+    func setPosition(to position: consuming CGPoint) {
+        let value = AXValueCreate(.cgPoint, &position)!
+        let positionKey = UIElement.AttributeName.position.rawValue as CFString
+        let result = AXUIElementSetAttributeValue(raw, positionKey, value)
+        if result != .success {
+            // Log
+            let role = attributes[.role] as? String ?? "(Unknown Role)"
+            let subrole = attributes[.subrole] as? String ?? "(Unknown Subrole)"
+            Self.logger.info("Failed to set position of \(role)-\(subrole) in \(pid)")
+        }
+    }
 }
 
 extension UIElement {

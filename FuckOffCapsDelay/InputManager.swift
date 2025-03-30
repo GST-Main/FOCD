@@ -5,10 +5,12 @@ final class InputManager {
     private var hid: IOHIDManager!
     private var isShiftPressed = false
     private var isOptionPressed = false
-    private var isCapslockOn = false
+    private(set) var isCapslockOn = false
     private var tertiaryIM: InputSourceManager.Language?
     
-    init() {
+    @Published var lastCapslockPressedTime: Date = Date()
+    
+    private init() {
         _ = InputSourceManager.currentInputSource // Initialize static variable
         if InputSourceManager.Language.japanese.inputSource != nil {
             tertiaryIM = .japanese
@@ -36,6 +38,8 @@ final class InputManager {
             }
         }
     }
+    
+    public static let shared = InputManager()
 
     func start() {
         let hid = IOHIDManagerCreate(kCFAllocatorDefault, 0)
@@ -90,6 +94,8 @@ final class InputManager {
         
         switch (usage, keyState) {
         case (Keys.capsLock, .keyDown):
+            lastCapslockPressedTime = .now
+            
             if isShiftPressed {
                 // Activate/Deactivate capslock + set to eng
                 isCapslockOn.toggle()

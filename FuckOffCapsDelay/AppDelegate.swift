@@ -4,7 +4,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
     var statusBar: NSStatusBar!
     var statusBarItem: NSStatusItem?
     let statusBarMenu: NSMenu = NSMenu()
-    let inputManager = InputManager()
+    let inputManager = InputManager.shared
     
     @UserDefault(key: "com.GST.focd.pref.showStatusMenuItem") var showStatusMenuItem: Bool = true
     

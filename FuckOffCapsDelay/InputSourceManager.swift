@@ -49,6 +49,20 @@ enum InputSourceManager {
         }
     }
     
+    /// 빠르게 다른 언어로 전환했다 돌아오기.
+    ///
+    /// 팝업 픽스 전용
+    static func rapidDummyAction() {
+        let current = currentInputSource
+        if current == .english {
+            TISSelectInputSource(Language.korean.inputSource!)
+            TISSelectInputSource(Language.english.inputSource!)
+        } else {
+            TISSelectInputSource(Language.english.inputSource!)
+            TISSelectInputSource(current.inputSource!)
+        }
+    }
+    
     struct Language: Equatable {
         let inputSource: TISInputSource?
         
