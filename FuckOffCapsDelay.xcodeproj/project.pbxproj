@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,6 +28,10 @@
 		1ADDFE362C7245E800C20D73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1AF8EA9F2CF1A32900E14740 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		1A2E415D2D994EA8007924D8 /* PopupFix */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = PopupFix; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1A7806BC2C71F88C0080D50A /* Frameworks */ = {
@@ -59,6 +63,7 @@
 		1A7806C12C71F88C0080D50A /* FuckOffCapsDelay */ = {
 			isa = PBXGroup;
 			children = (
+				1A2E415D2D994EA8007924D8 /* PopupFix */,
 				1A7806D12C71F94B0080D50A /* main.swift */,
 				1A7806C22C71F88C0080D50A /* AppDelegate.swift */,
 				1A7806D62C7205020080D50A /* InputManager.swift */,
@@ -86,6 +91,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				1A2E415D2D994EA8007924D8 /* PopupFix */,
 			);
 			name = FuckOffCapsDelay;
 			productName = FuckOffCapsDelay;
