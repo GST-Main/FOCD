@@ -4,9 +4,16 @@ import Combine
 final class PopupFucker {
     let inputManager = InputManager.shared
     let appObserver = ApplicationObserver.global
-    var cancellables: Set<AnyCancellable> = []
+    
+    var isRunning: Bool {
+        appObserver.isRunning
+    }
+    private var cancellables: Set<AnyCancellable> = []
     /// PDM (Popup Destruction Mode)
-    var PDM = false
+    private var PDM = false
+    
+    private init() {}
+    static let shared = PopupFucker()
     
     // Strategey - fuckItMode: temporarily pause to listen observer
     func start() {
