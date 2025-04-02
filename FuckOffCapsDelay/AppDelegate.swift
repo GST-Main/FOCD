@@ -67,8 +67,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
         statusBarMenu.addItem(koreanMenuItem)
         statusBarMenu.addItem(japaneseMenuItem)
         statusBarMenu.addItem(chineseMenuItem)
-        statusBarMenu.addItem(.separator())
-        statusBarMenu.addItem(fixPopupMenuItem)
+        if #available(macOS 14, *) {
+            statusBarMenu.addItem(.separator())
+            statusBarMenu.addItem(fixPopupMenuItem)
+        }
         statusBarMenu.addItem(.separator())
         statusBarMenu.addItem(hideBarItemMenuItem)
         statusBarMenu.addItem(quitMenuItem)
@@ -79,7 +81,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
         
         inputManager.start()
         
-        if fixPopup {
+        if #available(macOS 14, *), fixPopup {
             popupFix.start()
         }
     }
