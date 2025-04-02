@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-final class PopupFucker {
+final class PopupFix {
     let inputManager = InputManager.shared
     let appObserver = ApplicationObserver.global
     
@@ -13,9 +13,8 @@ final class PopupFucker {
     private var PDM = false
     
     private init() {}
-    static let shared = PopupFucker()
+    static let shared = PopupFix()
     
-    // Strategey - fuckItMode: temporarily pause to listen observer
     func start() {
         if !appObserver.isRunning {
             appObserver.start()
