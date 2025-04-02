@@ -32,6 +32,11 @@ final class PopupFucker {
                     return false
                 }
                 
+                // Caplock must be off
+                guard !inputManager.isCapslockOn else {
+                    return false
+                }
+                
                 // 마지막 캡스락 입력으로부터 최소 30초 이상
                 guard -inputManager.lastCapslockPressedTime.timeIntervalSinceNow > 30 else {
                     return false
@@ -56,7 +61,6 @@ final class PopupFucker {
             }
             .filterPopup()
             .sink { [weak self] popup in
-                // TODO: Fuck the caught popup
                 Task {
                     await self?.destroyPopup(popup)
                 }

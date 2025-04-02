@@ -78,6 +78,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
         }
         
         inputManager.start()
+        
+        if fixPopup {
+            popupFix.start()
+        }
     }
     
     func applicationWillBecomeActive(_ notification: Notification) {
