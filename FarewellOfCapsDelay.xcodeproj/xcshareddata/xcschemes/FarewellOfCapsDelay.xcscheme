@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1A7806BE2C71F88C0080D50A"
-               BuildableName = "Fuck Off Capslock Delay.app"
+               BuildableName = "FOCD.app"
                BlueprintName = "FarewellOfCapsDelay"
                ReferencedContainer = "container:FarewellOfCapsDelay.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1A7806BE2C71F88C0080D50A"
-            BuildableName = "Fuck Off Capslock Delay.app"
+            BuildableName = "FOCD.app"
             BlueprintName = "FarewellOfCapsDelay"
             ReferencedContainer = "container:FarewellOfCapsDelay.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1A7806BE2C71F88C0080D50A"
-            BuildableName = "Fuck Off Capslock Delay.app"
+            BuildableName = "FOCD.app"
             BlueprintName = "FarewellOfCapsDelay"
             ReferencedContainer = "container:FarewellOfCapsDelay.xcodeproj">
          </BuildableReference>
