@@ -1,12 +1,16 @@
 import AppKit
 
-class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
+final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
     var statusBar: NSStatusBar!
     var statusBarItem: NSStatusItem?
     let statusBarMenu: NSMenu = NSMenu()
-    let inputManager = InputManager()
+    let inputManager = InputManager.shared
+    let popupFix = PopupFucker.shared
     
-    @UserDefault(key: "com.GST.focd.pref.showStatusMenuItem") var showStatusMenuItem: Bool = true
+    @UserDefault(key: "com.GST.focd.pref.showStatusMenuItem")
+    var showStatusMenuItem: Bool = true
+    @UserDefault(key: "com.GST.focd.pref.fixPopup")
+    var fixPopup: Bool = false
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Show hidden status bar icon on duplicated launching
@@ -43,6 +47,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
         chineseMenuItem.action = #selector(setInputSourceChinese)
         chineseMenuItem.identifier = NSUserInterfaceItemIdentifier("menuItem.chinese")
         
+        let fixPopupMenuItem = NSMenuItem()
+        fixPopupMenuItem.title = "한영 팝업 고치기 (베타)"
+        fixPopupMenuItem.target = self
+        fixPopupMenuItem.action = #selector(togglePopupFix)
+        fixPopupMenuItem.identifier = NSUserInterfaceItemIdentifier("menuItem.fixPopup")
+        
         let hideBarItemMenuItem = NSMenuItem()
         hideBarItemMenuItem.title = "상태 바 아이콘 숨기기"
         hideBarItemMenuItem.target = self
@@ -57,6 +67,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
         statusBarMenu.addItem(koreanMenuItem)
         statusBarMenu.addItem(japaneseMenuItem)
         statusBarMenu.addItem(chineseMenuItem)
+        if #available(macOS 14, *) {
+            statusBarMenu.addItem(.separator())
+            statusBarMenu.addItem(fixPopupMenuItem)
+        }
         statusBarMenu.addItem(.separator())
         statusBarMenu.addItem(hideBarItemMenuItem)
         statusBarMenu.addItem(quitMenuItem)
@@ -66,6 +80,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
         }
         
         inputManager.start()
+        
+        if #available(macOS 14, *), fixPopup {
+            popupFix.start()
+        }
     }
     
     func applicationWillBecomeActive(_ notification: Notification) {
@@ -98,20 +116,20 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
     }
     
     func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-        switch menuItem.identifier {
-        case NSUserInterfaceItemIdentifier("menuItem.english"): 
+        switch menuItem.identifier?.rawValue {
+        case "menuItem.english":
             if InputSourceManager.currentInputSource == .english {
                 menuItem.state = .on
             } else {
                 menuItem.state = .off
             }
-        case NSUserInterfaceItemIdentifier("menuItem.korean"):
+        case "menuItem.korean":
             if InputSourceManager.currentInputSource == .korean {
                 menuItem.state = .on
             } else {
                 menuItem.state = .off
             }
-        case NSUserInterfaceItemIdentifier("menuItem.japanese"):
+        case "menuItem.japanese":
             if InputSourceManager.Language.japanese.inputSource == nil {
                 menuItem.state = .off
                 return false
@@ -121,7 +139,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
             } else {
                 menuItem.state = .off
             }
-        case NSUserInterfaceItemIdentifier("menuItem.chinese"):
+        case "menuItem.chinese":
             if InputSourceManager.Language.chinese.inputSource == nil {
                 menuItem.state = .off
                 return false
@@ -131,6 +149,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
             } else {
                 menuItem.state = .off
             }
+        case "menuItem.fixPopup":
+            menuItem.state = popupFix.isRunning ? .on : .off
         default: return true
         }
         
@@ -158,6 +178,26 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation {
     @objc func setInputSourceChinese() {
         if InputSourceManager.currentInputSource != .chinese {
             InputSourceManager.setInputSource(to: .chinese)
+        }
+    }
+    
+    @objc func togglePopupFix() {
+        if fixPopup {
+            popupFix.stop()
+            fixPopup = false
+        } else {
+            let options: NSDictionary = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true]
+            
+            if AXIsProcessTrustedWithOptions(options) {
+                popupFix.start()
+                fixPopup = true
+            } else {
+                let dialog = NSAlert()
+                dialog.messageText = "접근성 권한 필요"
+                dialog.informativeText = "해당 기능을 사용하기 위해선 접근성 권한이 필요합니다. '설정 > 개인정보 보호 및 보안 > 손쉬운 사용'에서 FOCD를 추가 후 재시작 해주세요."
+                dialog.addButton(withTitle: "확인")
+                dialog.runModal()
+            }
         }
     }
     
