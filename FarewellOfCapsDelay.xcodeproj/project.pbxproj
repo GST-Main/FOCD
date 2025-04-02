@@ -17,10 +17,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1A7806BF2C71F88C0080D50A /* Fuck Off Capslock Delay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fuck Off Capslock Delay.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A7806BF2C71F88C0080D50A /* FOCD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FOCD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A7806C22C71F88C0080D50A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A7806C62C71F88C0080D50A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1A7806CB2C71F88C0080D50A /* FuckOffCapsDelay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FuckOffCapsDelay.entitlements; sourceTree = "<group>"; };
+		1A7806CB2C71F88C0080D50A /* FarewellOfCapsDelay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FarewellOfCapsDelay.entitlements; sourceTree = "<group>"; };
 		1A7806D12C71F94B0080D50A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		1A7806D42C72014D0080D50A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1A7806D62C7205020080D50A /* InputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 		1A7806B62C71F88C0080D50A = {
 			isa = PBXGroup;
 			children = (
-				1A7806C12C71F88C0080D50A /* FuckOffCapsDelay */,
+				1A7806C12C71F88C0080D50A /* FarewellOfCapsDelay */,
 				1A7806C02C71F88C0080D50A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,12 +55,12 @@
 		1A7806C02C71F88C0080D50A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1A7806BF2C71F88C0080D50A /* Fuck Off Capslock Delay.app */,
+				1A7806BF2C71F88C0080D50A /* FOCD.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1A7806C12C71F88C0080D50A /* FuckOffCapsDelay */ = {
+		1A7806C12C71F88C0080D50A /* FarewellOfCapsDelay */ = {
 			isa = PBXGroup;
 			children = (
 				1A2E415D2D994EA8007924D8 /* PopupFix */,
@@ -72,17 +72,17 @@
 				1ADDFE362C7245E800C20D73 /* Info.plist */,
 				1A7806C62C71F88C0080D50A /* Assets.xcassets */,
 				1A7806D32C72014D0080D50A /* Main.storyboard */,
-				1A7806CB2C71F88C0080D50A /* FuckOffCapsDelay.entitlements */,
+				1A7806CB2C71F88C0080D50A /* FarewellOfCapsDelay.entitlements */,
 			);
-			path = FuckOffCapsDelay;
+			path = FarewellOfCapsDelay;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1A7806BE2C71F88C0080D50A /* FuckOffCapsDelay */ = {
+		1A7806BE2C71F88C0080D50A /* FarewellOfCapsDelay */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1A7806CE2C71F88C0080D50A /* Build configuration list for PBXNativeTarget "FuckOffCapsDelay" */;
+			buildConfigurationList = 1A7806CE2C71F88C0080D50A /* Build configuration list for PBXNativeTarget "FarewellOfCapsDelay" */;
 			buildPhases = (
 				1A7806BB2C71F88C0080D50A /* Sources */,
 				1A7806BC2C71F88C0080D50A /* Frameworks */,
@@ -95,9 +95,9 @@
 			fileSystemSynchronizedGroups = (
 				1A2E415D2D994EA8007924D8 /* PopupFix */,
 			);
-			name = FuckOffCapsDelay;
+			name = FarewellOfCapsDelay;
 			productName = FuckOffCapsDelay;
-			productReference = 1A7806BF2C71F88C0080D50A /* Fuck Off Capslock Delay.app */;
+			productReference = 1A7806BF2C71F88C0080D50A /* FOCD.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -115,7 +115,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1A7806BA2C71F88C0080D50A /* Build configuration list for PBXProject "FuckOffCapsDelay" */;
+			buildConfigurationList = 1A7806BA2C71F88C0080D50A /* Build configuration list for PBXProject "FarewellOfCapsDelay" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -128,7 +128,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1A7806BE2C71F88C0080D50A /* FuckOffCapsDelay */,
+				1A7806BE2C71F88C0080D50A /* FarewellOfCapsDelay */,
 			);
 		};
 /* End PBXProject section */
@@ -297,7 +297,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = FuckOffCapsDelay/FuckOffCapsDelay.entitlements;
+				CODE_SIGN_ENTITLEMENTS = FarewellOfCapsDelay/FarewellOfCapsDelay.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -307,8 +307,8 @@
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = 3SC5M9PT96;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FuckOffCapsDelay/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Fuck Off Capslock Delay";
+				INFOPLIST_FILE = FarewellOfCapsDelay/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FOCD;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -321,7 +321,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.GST.focd;
-				PRODUCT_NAME = "Fuck Off Capslock Delay";
+				PRODUCT_NAME = FOCD;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = focd;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -334,7 +334,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = FuckOffCapsDelay/FuckOffCapsDelay.entitlements;
+				CODE_SIGN_ENTITLEMENTS = FarewellOfCapsDelay/FarewellOfCapsDelay.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -344,8 +344,8 @@
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = 3SC5M9PT96;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FuckOffCapsDelay/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Fuck Off Capslock Delay";
+				INFOPLIST_FILE = FarewellOfCapsDelay/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FOCD;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -358,7 +358,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.GST.focd;
-				PRODUCT_NAME = "Fuck Off Capslock Delay";
+				PRODUCT_NAME = FOCD;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = focd;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -369,7 +369,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1A7806BA2C71F88C0080D50A /* Build configuration list for PBXProject "FuckOffCapsDelay" */ = {
+		1A7806BA2C71F88C0080D50A /* Build configuration list for PBXProject "FarewellOfCapsDelay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1A7806CC2C71F88C0080D50A /* Debug */,
@@ -378,7 +378,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1A7806CE2C71F88C0080D50A /* Build configuration list for PBXNativeTarget "FuckOffCapsDelay" */ = {
+		1A7806CE2C71F88C0080D50A /* Build configuration list for PBXNativeTarget "FarewellOfCapsDelay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1A7806CF2C71F88C0080D50A /* Debug */,

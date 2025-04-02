@@ -17,8 +17,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1A7806BE2C71F88C0080D50A"
                BuildableName = "Fuck Off Capslock Delay.app"
-               BlueprintName = "FuckOffCapsDelay"
-               ReferencedContainer = "container:FuckOffCapsDelay.xcodeproj">
+               BlueprintName = "FarewellOfCapsDelay"
+               ReferencedContainer = "container:FarewellOfCapsDelay.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,8 +46,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1A7806BE2C71F88C0080D50A"
             BuildableName = "Fuck Off Capslock Delay.app"
-            BlueprintName = "FuckOffCapsDelay"
-            ReferencedContainer = "container:FuckOffCapsDelay.xcodeproj">
+            BlueprintName = "FarewellOfCapsDelay"
+            ReferencedContainer = "container:FarewellOfCapsDelay.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1A7806BE2C71F88C0080D50A"
             BuildableName = "Fuck Off Capslock Delay.app"
-            BlueprintName = "FuckOffCapsDelay"
-            ReferencedContainer = "container:FuckOffCapsDelay.xcodeproj">
+            BlueprintName = "FarewellOfCapsDelay"
+            ReferencedContainer = "container:FarewellOfCapsDelay.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
