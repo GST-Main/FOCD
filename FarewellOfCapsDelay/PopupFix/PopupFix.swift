@@ -11,6 +11,7 @@ final class PopupFix {
     private var cancellables: Set<AnyCancellable> = []
     /// PDM (Popup Destruction Mode)
     private var PDM = false
+    private var lastAttack: Date = .now
     
     private init() {}
     static let shared = PopupFix()
@@ -85,6 +86,11 @@ final class PopupFix {
     func destroyPopup(_ popup: UIElement, repeating count: Int = 8) async {
         let hiddenPosition = CGPoint(x: 30_000, y: 30_000)
         popup.setPosition(to: hiddenPosition)
+        
+        if -lastAttack.timeIntervalSinceNow > 3.0 { // throttle
+            InputSourceManager.rapidDummyAction()
+            lastAttack = .now
+        }
         
         let task = Task {
             do {

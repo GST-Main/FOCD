@@ -76,8 +76,8 @@ final class InputManager {
             unmanagedSelf.checkInput(value)
         }
         IOHIDManagerRegisterInputValueCallback(hid, callback, Unmanaged.passUnretained(self).toOpaque())
-        IOHIDManagerScheduleWithRunLoop(hid, CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue)
-
+        IOHIDManagerScheduleWithRunLoop(hid, CFRunLoopGetCurrent(), CFRunLoopMode.commonModes.rawValue)
+        
         let res = IOHIDManagerOpen(hid, 0)
         if res != kIOReturnSuccess {
             logger.fault("Failed to initialize hid")
